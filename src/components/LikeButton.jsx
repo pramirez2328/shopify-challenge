@@ -1,7 +1,11 @@
 import React from "react";
 
-function LikeButton() {
-  return <div>hello LikeButton</div>;
+function LikeButton({ id }) {
+  return (
+    <button className="button" key={id}>
+      Like
+    </button>
+  );
 }
 
 export default LikeButton;
