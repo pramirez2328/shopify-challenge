@@ -32,7 +32,7 @@ function ListOfImages() {
       <LoadMore load={handleLoadMore} />
       <div className="cardsList">
         {cards.map((card) => {
-          return <CardImage key={card.date} {...card} />;
+          return <CardImage key={`id-${card.date}`} {...card} />;
         })}
       </div>
     </>
