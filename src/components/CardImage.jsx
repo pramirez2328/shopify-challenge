@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CardImage.css";
 import LikeButton from "./LikeButton";
 
 function CardImage({ date, explanation, hdurl, title }) {
+  const [like, setLikes] = useState(false);
+
+  const handleLikes = () => {
+    console.log("hello likes");
+  };
   return (
     <div className="card">
       <h2 className="title">- {title}</h2>
@@ -12,7 +17,7 @@ function CardImage({ date, explanation, hdurl, title }) {
         <img src={hdurl} alt="space banner" />
       </div>
       <p className="explanation">{explanation}</p>
-      <LikeButton id={date} />
+      <LikeButton id={date} like={handleLikes} />
     </div>
   );
 }

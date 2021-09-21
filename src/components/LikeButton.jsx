@@ -1,8 +1,8 @@
 import React from "react";
 
-function LikeButton({ id }) {
+function LikeButton({ id, likes }) {
   return (
-    <button className="button" key={id}>
+    <button className="button" onClick={() => likes(id)}>
       Like
     </button>
   );

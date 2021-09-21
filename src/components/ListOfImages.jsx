@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CardImage from "./CardImage";
+import LoadMore from "./LoadMore";
 import "./ListOfImages.css";
 
 function ListOfImages() {
   const [cards, setCards] = useState([] || [localStorage.getItem("cards")]);
 
-  useEffect(() => {
-    const options = {
+  const apiCall = () => {
+    const call = {
       credentials: "include",
       method: "GET",
       url: `https://api.nasa.gov/planetary/apod?api_key=Z88FkILrR8LiOo0nDtU4tGvDVoGKKIf0fHgDgHE3&start_date=2017-01-01&end_date=2021-01-10`,
@@ -18,7 +19,7 @@ function ListOfImages() {
     };
 
     axios
-      .request(options)
+      .request(call)
       .then((response) => {
         setCards(response.data);
       })
@@ -28,16 +29,25 @@ function ListOfImages() {
           error.message
         );
       });
+  };
 
-    localStorage.setItem("cards", cards);
-  });
+  useEffect(() => {
+    apiCall();
+  }, []);
+
+  const handleLoadMore = () => {
+    console.log("hello");
+  };
 
   return (
-    <div className="cardsList">
-      {cards.map((card) => {
-        return <CardImage key={card.date} {...card} />;
-      })}
-    </div>
+    <>
+      <LoadMore load={handleLoadMore} />
+      <div className="cardsList">
+        {cards.map((card) => {
+          return <CardImage key={card.date} {...card} />;
+        })}
+      </div>
+    </>
   );
 }
 

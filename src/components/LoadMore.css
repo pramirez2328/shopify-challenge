@@ -1,0 +1,11 @@
+#loadMore {
+  padding: 1em 4em;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  background-color: gold;
+  float: right;
+  font-size: larger;
+  text-shadow: 1px 1px black;
+  margin: 1em 6em 1em 0;
+}

@@ -12,3 +12,8 @@
     rgba(255, 215, 0, 0.7161065109637605) 51%
   );
 }
+
+#authorQuote {
+  color: grey;
+  font-size: smaller;
+}
