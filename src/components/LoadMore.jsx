@@ -3,9 +3,11 @@ import "./LoadMore.css";
 
 function LoadMore({ load }) {
   return (
-    <button id="loadMore" onClick={load}>
-      LOAD MORE IMAGES
-    </button>
+    <div id="loadMoreDiv">
+      <button id="loadMore" onClick={load}>
+        LOAD MORE IMAGES
+      </button>
+    </div>
   );
 }
 

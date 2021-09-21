@@ -1,11 +1,28 @@
+#loadMoreDiv {
+  display: flex;
+  justify-content: flex-end;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
 #loadMore {
   padding: 1em 4em;
   border-radius: 5px;
   color: white;
   border: none;
   background-color: gold;
-  float: right;
   font-size: larger;
   text-shadow: 1px 1px black;
   margin: 1em 6em 1em 0;
 }
+
+@media only screen and (max-width: 600px) {
+  #loadMore {
+    margin: 0;
+    width: 100%;
+    padding: 1em 0;
+    color: black;
+  }
+} ;

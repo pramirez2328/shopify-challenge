@@ -17,3 +17,15 @@
   color: grey;
   font-size: smaller;
 }
+
+@media only screen and (max-width: 600px) {
+  #header h2 {
+    text-align: left;
+    margin: 0 1em;
+    font-size: 0.8em;
+  }
+
+  #authorQuote {
+    font-size: x-small;
+  }
+}
