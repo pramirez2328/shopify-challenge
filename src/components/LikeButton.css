@@ -1,6 +1,12 @@
 .button {
   width: 100%;
-  background-color: white;
-  color: black;
-  padding: 1em;
+  padding: 0.5em;
+  color: white;
+  letter-spacing: 0.5em;
+  background-color: gold;
+  font-size: 1.4em;
+  border-radius: 10px;
+  border: none;
+  text-shadow: 0.5px 0.5px black;
+  margin: 0.5em 0;
 }

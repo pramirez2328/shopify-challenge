@@ -1,13 +1,13 @@
 import React from "react";
 import "./LikeButton.css";
-function LikeButton({ buttonId, likeId, like }) {
+function LikeButton({ id, buttonId, likeId, like }) {
   return (
     <button
       id={buttonId}
       className="button"
-      onClick={() => like(buttonId, likeId)}
+      onClick={() => like(id, buttonId, likeId)}
     >
-      Like
+      LIKE
     </button>
   );
 }
