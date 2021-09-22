@@ -6,9 +6,11 @@ import SavedLikes from "./SavedLikes";
 import "./ListOfImages.css";
 
 function ListOfImages() {
-  const [cards, setCards] = useState([] || [localStorage.getItem("cards")]);
-  let [monthImages, setMonthImages] = useState(1);
-  const [savedLikes, setSavedLikes] = useState([]);
+  const [cards, setCards] = useState([]);
+  let [monthImages, setMonthImages] = useState(3);
+  let prev = JSON.parse(localStorage.getItem("saves"));
+  const [savedLikes, setSavedLikes] = useState(prev || []);
+  let [exposeButtons, setExposeButtons] = useState(false);
 
   const apiCall = (month) => {
     let temp = month >= 10 ? month : `0${month}`;
@@ -24,15 +26,17 @@ function ListOfImages() {
   }, [monthImages]);
 
   useEffect(() => {
-    localStorage.setItem("cards", cards);
+    localStorage.setItem("cards", JSON.stringify(cards));
   }, [cards]);
 
   useEffect(() => {
-    localStorage.setItem("saves", savedLikes);
+    let prev = JSON.stringify(savedLikes);
+    localStorage.setItem("saves", prev);
   }, [savedLikes]);
 
   const handleLoadMore = () => {
     monthImages > 11 ? setMonthImages(1) : setMonthImages(monthImages + 1);
+    setExposeButtons(false);
   };
 
   const handleLikes = (id, button, like) => {
@@ -45,22 +49,26 @@ function ListOfImages() {
   };
 
   const handleUndo = (id, button, undo) => {
+    let save = savedLikes.filter((obj) => obj.date !== id);
+    setSavedLikes([...save]);
     document.getElementById(button).style.display = "block";
     document.getElementById(undo).style.display = "none";
   };
 
   const handleSaves = () => {
-    console.log("hello");
+    let localSaves = localStorage.getItem("saves");
+    setCards(JSON.parse(localSaves));
+    setExposeButtons(true);
   };
 
   return (
     <>
-      <div id="topButtons">
+      <section id="topButtons">
         <SavedLikes save={handleSaves} />
         <LoadMore load={handleLoadMore} />
-      </div>
+      </section>
 
-      <div className="cardsList">
+      <section className="cardsList">
         {cards.map((card) => {
           return (
             <CardImage
@@ -68,10 +76,11 @@ function ListOfImages() {
               {...card}
               saveLikes={handleLikes}
               undoLikes={handleUndo}
+              exposeButtons={exposeButtons}
             />
           );
         })}
-      </div>
+      </section>
     </>
   );
 }

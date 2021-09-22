@@ -8,3 +8,10 @@
   text-shadow: 1px 1px black;
   margin: 1em 6em 1em 0;
 }
+
+@media only screen and (max-width: 600px) {
+  #savedLikes {
+    margin: 1em 0;
+    padding: 1em 5.5em;
+  }
+} ;
