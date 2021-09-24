@@ -1,5 +1,5 @@
 import React from "react";
-import "./SavedLikes.css";
+import "../savedLikes.css";
 function SavedLikes({ save }) {
   return (
     <div>

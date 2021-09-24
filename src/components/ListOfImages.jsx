@@ -62,7 +62,7 @@ function ListOfImages() {
   };
 
   return (
-    <>
+    <div>
       <section id="topButtons">
         <SavedLikes save={handleSaves} />
         <LoadMore load={handleLoadMore} />
@@ -81,7 +81,7 @@ function ListOfImages() {
           );
         })}
       </section>
-    </>
+    </div>
   );
 }
 
