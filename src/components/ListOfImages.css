@@ -15,12 +15,7 @@
 
 @media (max-width: 600px) {
   #topButtons {
-    display: flex;
-    flex-direction: column important;
+    flex-direction: column;
     align-items: center;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    background-color: white;
   }
 }
