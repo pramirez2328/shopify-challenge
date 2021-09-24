@@ -1,4 +1,4 @@
-.cardsList {
+#cardsList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

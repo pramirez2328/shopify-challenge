@@ -68,7 +68,7 @@ function ListOfImages() {
         <LoadMore load={handleLoadMore} />
       </section>
 
-      <section className="cardsList">
+      <section id="cardsList">
         {cards.map((card) => {
           return (
             <CardImage
