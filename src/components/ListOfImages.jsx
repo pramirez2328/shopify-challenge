@@ -12,14 +12,18 @@ function ListOfImages() {
   const [savedLikes, setSavedLikes] = useState(prev || []);
   let [exposeButtons, setExposeButtons] = useState(false);
 
-  const apiCall = (month) => {
+  async function apiCall(month) {
     let temp = month >= 10 ? month : `0${month}`;
-    fetch(
-      `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}&start_date=2017-${temp}-21&end_date=2017-${temp}-28`
-    )
-      .then((response) => response.json())
-      .then((data) => setCards(data));
-  };
+    try {
+      let call = await fetch(
+        `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}&start_date=2017-${temp}-21&end_date=2017-${temp}-28`
+      );
+      let data = await call.json();
+      setCards(data);
+    } catch (error) {
+      alert("sever is not working, please try again later", error);
+    }
+  }
 
   useEffect(() => {
     apiCall(monthImages);
